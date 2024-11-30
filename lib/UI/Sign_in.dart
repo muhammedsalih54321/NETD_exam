@@ -158,8 +158,10 @@ class _SignInState extends State<SignIn> {
                         signin =
                             BlocProvider.of<SigninBloc>(context).signinModel;
                         Navigator.of(context).pop();
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => HomePage(Email: signin.email.toString(),)));
+                        Navigator.of(context).pushAndRemoveUntil(
+                                          MaterialPageRoute(
+                                              builder: (context) => HomePage(Email: signin.email.toString())),
+                                          (Route<dynamic> route) => false);
                       }
                   
                     },
